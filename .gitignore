@@ -32,4 +32,9 @@ build/
 ### VS Code ###
 .vscode/
 
-.envGITHUB_SECRETS.md
+### Sensitive Files ###
+.env
+GITHUB_SECRETS.md
+*.pem
+*.key
+secrets/

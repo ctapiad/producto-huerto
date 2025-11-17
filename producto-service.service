@@ -16,6 +16,8 @@ SyslogIdentifier=producto-service
 # Variables de entorno
 Environment="SPRING_PROFILES_ACTIVE=prod"
 Environment="SERVER_PORT=8081"
+# IMPORTANTE: Configurar MONGODB_URI con las credenciales reales
+# Environment="MONGODB_URI=mongodb+srv://ctapiad_db_user:PASSWORD@huerto.bi4rvwk.mongodb.net/Huerto"
 
 [Install]
 WantedBy=multi-user.target

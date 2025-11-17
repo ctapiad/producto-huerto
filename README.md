@@ -60,9 +60,11 @@ producto/
 El microservicio se conecta a MongoDB Atlas usando la URI configurada en `src/main/resources/application.properties`:
 
 ```properties
-spring.data.mongodb.uri=mongodb+srv://ctapiad_db_user:MhRBXg6OTYK9AqQv@huerto.bi4rvwk.mongodb.net/Huerto
+spring.data.mongodb.uri=${MONGODB_URI}
 spring.data.mongodb.database=Huerto
 ```
+
+**Nota de Seguridad:** Las credenciales deben configurarse mediante variables de entorno.
 
 ## 🚀 Ejecución
 
