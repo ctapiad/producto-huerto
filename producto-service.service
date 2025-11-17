@@ -1,0 +1,21 @@
+[Unit]
+Description=Producto Microservice - HuertoHogar
+After=network.target
+
+[Service]
+Type=simple
+User=ubuntu
+WorkingDirectory=/home/ubuntu/producto-service
+ExecStart=/usr/bin/java -jar /home/ubuntu/producto-service/*.jar
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=producto-service
+
+# Variables de entorno
+Environment="SPRING_PROFILES_ACTIVE=prod"
+Environment="SERVER_PORT=8081"
+
+[Install]
+WantedBy=multi-user.target

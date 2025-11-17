@@ -1,13 +1,12 @@
-package com.fullstack.usuario;
+package com.fullstack.producto;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class UsuarioApplication {
+public class ProductoApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(UsuarioApplication.class, args);
+        SpringApplication.run(ProductoApplication.class, args);
     }
-
 }
