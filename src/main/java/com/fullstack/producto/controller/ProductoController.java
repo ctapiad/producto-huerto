@@ -1,6 +1,7 @@
 package com.fullstack.producto.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -11,7 +12,9 @@ import org.springframework.validation.annotation.Validated;
 import com.fullstack.producto.model.dto.ProductoDto;
 import com.fullstack.producto.model.dto.CrearProductoDto;
 import com.fullstack.producto.model.dto.ActualizarProductoDto;
+import com.fullstack.producto.model.dto.UploadUrlRequestDto;
 import com.fullstack.producto.service.ProductoService;
+import com.fullstack.producto.service.S3Service;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -38,6 +41,9 @@ public class ProductoController {
 
     @Autowired
     private ProductoService productoService;
+
+    @Autowired
+    private S3Service s3Service;
 
     @Operation(summary = "Obtener todos los productos")
     @ApiResponses(value = {
@@ -271,6 +277,32 @@ public class ProductoController {
             return ResponseEntity.noContent().build();
         }
         return ResponseEntity.ok(productos);
+    }
+
+    @Operation(summary = "Generar URL prefirmada para subir imagen a S3")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "URL prefirmada generada exitosamente"),
+        @ApiResponse(responseCode = "400", description = "Tipo de contenido no válido")
+    })
+    @PostMapping("/productos/upload-url")
+    public ResponseEntity<?> generarUrlDeSubida(@Valid @RequestBody UploadUrlRequestDto request) {
+        try {
+            // Validar que el tipo de contenido sea una imagen
+            if (!s3Service.isValidImageContentType(request.getContentType())) {
+                return ResponseEntity.badRequest()
+                    .body(Map.of("error", "Tipo de contenido no válido. Solo se permiten imágenes (jpeg, jpg, png, gif, webp)"));
+            }
+
+            Map<String, String> response = s3Service.generatePresignedUploadUrl(
+                request.getFileName(), 
+                request.getContentType()
+            );
+            
+            return ResponseEntity.ok(response);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                .body(Map.of("error", "Error al generar URL de subida: " + e.getMessage()));
+        }
     }
 
     @Operation(summary = "Health check para el servicio de productos")
