@@ -22,7 +22,7 @@ jobs:
             echo "Ve a: https://github.com/${{ github.repository }}/settings/secrets/actions"
             echo ""
             echo "Configura estos secrets:"
-            echo "  • AWS_HOST = 54.158.158.91"
+            echo "  • AWS_HOST = 34.202.46.121"
             echo "  • AWS_USER = ubuntu"
             echo "  • SSH_PRIVATE_KEY = (contenido de huerto.pem)"
             echo ""

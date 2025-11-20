@@ -96,13 +96,13 @@ java -jar target/producto-0.0.1-SNAPSHOT.jar
 Este proyecto incluye CI/CD automático con GitHub Actions. Ver **[DEPLOYMENT.md](DEPLOYMENT.md)** para instrucciones detalladas.
 
 ### URLs de Producción
-- **API Base**: `http://54.158.158.91:8081`
-- **Health Check**: `http://54.158.158.91:8081/api/productos/health`
-- **Swagger UI**: `http://54.158.158.91:8081/swagger-ui/index.html`
+- **API Base**: `http://34.202.46.121:8081`
+- **Health Check**: `http://34.202.46.121:8081/api/productos/health`
+- **Swagger UI**: `http://34.202.46.121:8081/swagger-ui/index.html`
 
 ### Configuración Rápida
 1. Ejecutar `setup-ec2.sh` en la EC2
-2. Configurar secrets en GitHub (EC2_HOST, EC2_USER, EC2_SSH_KEY)
+2. Configurar secrets en GitHub (AWS_HOST, AWS_USER, SSH_PRIVATE_KEY)
 3. Push a main → Despliegue automático
 
 ## 📚 API Endpoints

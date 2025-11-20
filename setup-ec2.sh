@@ -36,6 +36,6 @@ sudo ufw allow 443/tcp
 
 echo "=== Configuración completada ==="
 echo "Siguiente paso: Configurar los secrets en GitHub:"
-echo "  - EC2_HOST: 54.158.158.91"
-echo "  - EC2_USER: ubuntu"
-echo "  - EC2_SSH_KEY: (tu clave privada SSH)"
+echo "  - AWS_HOST: 34.202.46.121"
+echo "  - AWS_USER: ubuntu"
+echo "  - SSH_PRIVATE_KEY: (tu clave privada SSH)"

@@ -92,11 +92,11 @@ Este documento describe la migración del microservicio de productos de Oracle C
 
 La conexión está configurada en `application.properties`:
 ```properties
-spring.data.mongodb.uri=mongodb+srv://ctapiad_db_user:MhRBXg6OTYK9AqQv@huerto.bi4rvwk.mongodb.net/Huerto
+spring.data.mongodb.uri=${MONGODB_URI}
 spring.data.mongodb.database=Huerto
 ```
 
-**Nota:** En producción, considera usar variables de entorno para las credenciales.
+**Nota:** Las credenciales se configuran mediante variables de entorno por seguridad.
 
 ## 📝 Fecha de Migración
 12 de noviembre de 2025
